@@ -16,4 +16,4 @@ $squares = array_map(function ($n){
 }, $numbers);
 
 $squares = array_map(fn ($n)=> $n*$n, $numbers);
-var_dump($squares)
+var_dump($squares);
