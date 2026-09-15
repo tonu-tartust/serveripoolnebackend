@@ -17,49 +17,22 @@ class Box
     $this->isOpen = true;
   }
 
-  public function __call($name, $arguments)
+  public function volume()
   {
-    var_dump($name, $args);
-  }
-
-  public function __set($name, $value)
-  {
-    var_dump($name, $value);
-  }
-
-  public function __get($name)
-  {
-    var_dump($name);
-    return 'cool value';
-  }
-
-  public function __invoke()
-  {
-    var_dump('im a function');
-  }
-
-  public function __toString()
-  {
-    return 'Im a Box';
-  }
-
-  public function __destruct()
-  {
-    var_dump('Object destroyed');
+    return $this->width * $this->hight * $this->length;
   }
 }
 
-function test()
+class Metalbox extends Box
 {
-  $box2 = new Box(1, 2, 3);
-}
-test();
+  public $weightPerUnit;
 
-$box1 = new Box(1, 2, 3);
-$box2 = $box1;
-$box1 = 1;
-var_dump($box1);
-echo $box1;
-$box1->meow = 'lol';
-var_dump($box->coolio);
-$box1();
+  public function mass()
+  {
+    return $this->weightPerUnit * $this->volume();
+  }
+}
+
+$metal1 = new Metalbox(1, 2, 3);
+$metal1->weightPerUnit = 1;
+var_dump($metal1->mass(), $metal1);
