@@ -23,8 +23,11 @@ class Box
   }
 }
 
+
+
 class Metalbox extends Box
 {
+  use HasColor;
   public $weightPerUnit;
 
   public function mass()
@@ -32,6 +35,25 @@ class Metalbox extends Box
     return $this->weightPerUnit * $this->volume();
   }
 }
+
+trait HasColor
+{
+  public $color;
+  public function showColor()
+  {
+    return $this->color;
+  }
+}
+
+trait HasSmell
+{
+  public $smell;
+  public function sniff()
+  {
+    return $this->smell;
+  }
+}
+
 
 $metal1 = new Metalbox(1, 2, 3);
 $metal1->weightPerUnit = 1;
