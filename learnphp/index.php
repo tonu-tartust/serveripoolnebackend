@@ -2,15 +2,23 @@
 
 class Box
 {
+  use HasSmell;
+  public bool $isOpen = false;
+  private bool $hasBeenOpened = false;
 
-  public $isOpen = false;
-  public $hasBeenOpened = false;
+  public function __construct(private int $width, private $height, private $length) {}
 
-  public function __construct(public $width, public $hight, public $length)
+  public function setWidth(int $width)
   {
-    var_dump('Object Created');
+    if ($width < 0) {
+      $this->width = 0;
+    }
+    $this->width = $width;
   }
-
+  public function getWidth()
+  {
+    return $this->width;
+  }
 
   public function open()
   {
@@ -19,20 +27,27 @@ class Box
 
   public function volume()
   {
-    return $this->width * $this->hight * $this->length;
+    return $this->width * $this->height * $this->length;
+  }
+  public function test1()
+  {
+    var_dump($this->hasBeenOpened);
   }
 }
 
-
-
-class Metalbox extends Box
+class MetalBox extends Box
 {
-  use HasColor;
+  use HasColor, HasSmell;
   public $weightPerUnit;
 
   public function mass()
   {
     return $this->weightPerUnit * $this->volume();
+  }
+
+  public function test2()
+  {
+    var_dump($this->hasBeenOpened);
   }
 }
 
@@ -55,6 +70,11 @@ trait HasSmell
 }
 
 
-$metal1 = new Metalbox(1, 2, 3);
+$metal1 = new MetalBox(1, 2, 3);
 $metal1->weightPerUnit = 1;
 var_dump($metal1->mass(), $metal1);
+$metal1->isOpen = 'asdasd';
+var_dump($metal1->isOpen);
+$metal1->test1();
+$metal1->test2();
+var_dump($metal1->hasBeenOpened);
