@@ -15,7 +15,7 @@ switch ($_SERVER['REQUEST_URI']) {
   case '/':
     include __DIR__ . '/../views/index.php';
     break;
-  case '/us':
+  case '/us.php':
     include __DIR__ . '/../views/us.php';
     break;
   default:
