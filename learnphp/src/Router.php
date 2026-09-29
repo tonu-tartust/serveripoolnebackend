@@ -15,7 +15,10 @@ class Router
     return self::$routes;
   }
 
-  public function __construct(private $path) {}
+  public function __construct(private $path)
+  {
+    $this->path = parse_url($this->path, PHP_URL_PATH);
+  }
 
   public function match(): Route | false
   {
