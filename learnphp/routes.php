@@ -94,5 +94,9 @@ Router::addRoute('/tech', function () {
     ],
   ];
 
-  include __DIR__ . '/views/tech.php';
+  include __DIR__ . '/views/us.php';
+});
+
+Router::addRoute('/test', function () {
+  $db = new App\DB();
 });
