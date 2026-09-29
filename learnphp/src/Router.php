@@ -6,7 +6,7 @@ class Router
 {
   /** @var Route[] $routes */
   private static $routes = [];
-  public static function addRoute(string $path, callable $action)
+  public static function addRoute(string $path, callable|array $action)
   {
     self::$routes[] = new Route($path, $action);
   }
