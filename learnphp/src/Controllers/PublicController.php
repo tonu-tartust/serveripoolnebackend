@@ -22,6 +22,13 @@ class PublicController
     view('us', compact('title', 'posts'));
   }
 
+  public function tech()
+  {
+    $title = 'Technology';
+    $posts = Post::where('category', 'tech');
+    view('tech', compact('title', 'posts'));
+  }
+
   public function test()
   {
     $db = new DB();
