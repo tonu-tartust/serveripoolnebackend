@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-class Post extends Model
+class User extends Model
 {
-  public static $table = 'posts';
+  public static $table = 'users';
 
-  public $title;
-  public $body;
-  public $author;
-  public $category;
+  public $name;
+  public $email;
+  public $password;
   public $created_at;
   public $updated_at;
 }

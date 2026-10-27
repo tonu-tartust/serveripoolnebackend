@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 
 function dump(...$values)
 {
@@ -25,3 +26,11 @@ function redirect($path) {
 
 }
 
+function auth()
+{
+  $userID = $_SESSION['userID'] ?? null;
+  if ($userID) {
+    return User::find($userID);
+  }
+  return false;
+}
